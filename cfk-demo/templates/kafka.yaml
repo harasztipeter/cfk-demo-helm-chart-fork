@@ -1,0 +1,66 @@
+# https://developer.confluent.io/courses/architecture/control-plane/#kraft-cluster-node-roles
+# Sounds like KRaft can either be run in dedicated or shared mode
+# CfK seems to always use dedicated mode (since they are configured separately and spawn their own pods)
+
+apiVersion: platform.confluent.io/v1beta1
+kind: KRaftController
+metadata:
+  name: kraft-controller
+  namespace: cfk
+spec:
+  replicas: 3
+  image:
+    application: docker.io/confluentinc/cp-server:7.5.0
+    init: confluentinc/confluent-init-container:2.7.0
+  dataVolumeCapacity: 250Mi
+  tls:
+    secretRef: tls-kraft-controller
+  authorization:
+    type: simple
+    superUsers:
+      - User:kafka #Broker Cert CN
+      - User:kraft #KRaft Controller Cert CN
+{{/*  listeners:*/}}
+{{/*    controller:*/}}
+{{/*      authentication:*/}}
+{{/*        type: mtls*/}}
+{{/*        principalMappingRules:*/}}
+{{/*          - RULE:^CN=([a-zA-Z0-9]*).*$/$1/*/}}
+{{/*      tls:*/}}
+{{/*        enabled: true*/}}
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+  namespace: cfk
+spec:
+  replicas: 3
+  image:
+    application: confluentinc/cp-server:7.5.0
+    init: confluentinc/confluent-init-container:2.7.0
+  dataVolumeCapacity: 250Mi
+{{/*  tls:*/}}
+{{/*    secretRef: tls-kafka*/}}
+  authorization:
+    type: simple
+    superUsers:
+      - User:kafka #Broker Cert CN
+      - User:kraft #KRaft Controller Cert CN
+{{/*  listeners:*/}}
+{{/*    internal:*/}}
+{{/*      authentication:*/}}
+{{/*        type: mtls*/}}
+{{/*        principalMappingRules:*/}}
+{{/*          - RULE:^CN=([a-zA-Z0-9]*).*$/$1/*/}}
+{{/*      tls:*/}}
+{{/*        enabled: true*/}}
+  dependencies:
+    kRaftController:
+      clusterRef:
+        name: kraft-controller
+{{/*      controllerListener:*/}}
+{{/*        authentication:*/}}
+{{/*          type: mtls*/}}
+{{/*        tls:*/}}
+{{/*          enabled: true*/}}

@@ -1,0 +1,24 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: ControlCenter
+metadata:
+  name: control-center
+  namespace: cfk
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-enterprise-control-center:7.5.0
+    init: confluentinc/confluent-init-container:2.7.0
+  dataVolumeCapacity: 250Mi
+{{/*  tls:*/}}
+{{/*    secretRef: tls-control-center*/}}
+  dependencies:
+    kafka:
+      bootstrapEndpoint: kafka.cfk.svc.cluster.local:9071
+{{/*      authentication:*/}}
+{{/*        type: mtls*/}}
+{{/*      tls:*/}}
+{{/*        enabled: true*/}}
+    schemaRegistry:
+      url: https://schema-registry.cfk.svc.cluster.local:8081
+{{/*      tls:*/}}
+{{/*        enabled: true*/}}

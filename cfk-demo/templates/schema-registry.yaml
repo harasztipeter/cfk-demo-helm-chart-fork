@@ -1,0 +1,19 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: SchemaRegistry
+metadata:
+  name: schema-registry
+  namespace: cfk
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-schema-registry:7.5.0
+    init: confluentinc/confluent-init-container:2.7.0
+{{/*  tls:*/}}
+{{/*    secretRef: tls-schema-registry*/}}
+  dependencies:
+    kafka:
+      bootstrapEndpoint: kafka.cfk.svc.cluster.local:9071
+{{/*      authentication:*/}}
+{{/*        type: mtls*/}}
+{{/*      tls:*/}}
+{{/*        enabled: true*/}}
