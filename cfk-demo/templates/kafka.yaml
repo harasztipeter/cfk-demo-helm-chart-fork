@@ -13,8 +13,8 @@ spec:
     application: docker.io/confluentinc/cp-server:7.5.0
     init: confluentinc/confluent-init-container:2.7.0
   dataVolumeCapacity: 250Mi
-  tls:
-    secretRef: tls-kraft-controller
+{{/*  tls:*/}}
+{{/*    secretRef: tls-kraft-controller*/}}
   authorization:
     type: simple
     superUsers:
