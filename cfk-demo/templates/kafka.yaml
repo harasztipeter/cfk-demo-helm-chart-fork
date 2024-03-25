@@ -10,8 +10,8 @@ metadata:
 spec:
   replicas: 3
   image:
-    application: docker.io/confluentinc/cp-server:7.5.0
-    init: confluentinc/confluent-init-container:2.7.0
+    application: {{ .Values.images.kraftControllerApplication }}
+    init: {{ .Values.images.init }}
   dataVolumeCapacity: 250Mi
 {{/*  tls:*/}}
 {{/*    secretRef: tls-kraft-controller*/}}
@@ -37,8 +37,8 @@ metadata:
 spec:
   replicas: 3
   image:
-    application: confluentinc/cp-server:7.5.0
-    init: confluentinc/confluent-init-container:2.7.0
+    application: {{ .Values.images.cpServer }}
+    init: {{ .Values.images.init }}
   dataVolumeCapacity: 250Mi
 {{/*  tls:*/}}
 {{/*    secretRef: tls-kafka*/}}

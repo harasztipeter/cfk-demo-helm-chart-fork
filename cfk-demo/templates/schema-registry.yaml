@@ -6,8 +6,8 @@ metadata:
 spec:
   replicas: 1
   image:
-    application: confluentinc/cp-schema-registry:7.5.0
-    init: confluentinc/confluent-init-container:2.7.0
+    application: {{ .Values.images.registry }}
+    init: {{ .Values.images.init }}
 {{/*  tls:*/}}
 {{/*    secretRef: tls-schema-registry*/}}
   dependencies:
