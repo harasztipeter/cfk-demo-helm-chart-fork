@@ -8,7 +8,7 @@ metadata:
   name: kraft-controller
   namespace: cfk
 spec:
-  replicas: 3
+  replicas: {{ .Values.kraft.replicas }}
   image:
     application: {{ .Values.images.kraftControllerApplication }}
     init: {{ .Values.images.init }}
@@ -35,7 +35,7 @@ metadata:
   name: kafka
   namespace: cfk
 spec:
-  replicas: 3
+  replicas: {{ .Values.kafka.replicas }}
   image:
     application: {{ .Values.images.cpServer }}
     init: {{ .Values.images.init }}

@@ -4,7 +4,7 @@ metadata:
   name: schema-registry
   namespace: cfk
 spec:
-  replicas: 1
+  replicas: {{ .Values.schemaRegistry.replicas }}
   image:
     application: {{ .Values.images.registry }}
     init: {{ .Values.images.init }}
