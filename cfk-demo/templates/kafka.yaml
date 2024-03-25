@@ -15,11 +15,11 @@ spec:
   dataVolumeCapacity: 250Mi
 {{/*  tls:*/}}
 {{/*    secretRef: tls-kraft-controller*/}}
-  authorization:
-    type: simple
-    superUsers:
-      - User:kafka #Broker Cert CN
-      - User:kraft #KRaft Controller Cert CN
+{{/*  authorization:*/}}
+{{/*    type: simple*/}}
+{{/*    superUsers:*/}}
+{{/*      - User:kafka #Broker Cert CN*/}}
+{{/*      - User:kraft #KRaft Controller Cert CN*/}}
 {{/*  listeners:*/}}
 {{/*    controller:*/}}
 {{/*      authentication:*/}}
