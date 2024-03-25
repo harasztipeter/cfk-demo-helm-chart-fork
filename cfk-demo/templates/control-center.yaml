@@ -20,6 +20,6 @@ spec:
 {{/*        enabled: true*/}}
     schemaRegistry:
 {{/*      url: https://schema-registry.cfk.svc.cluster.local:8081*/}}
-      url: schema-registry.cfk.svc.cluster.local:8081
+      url: http://schema-registry.cfk.svc.cluster.local:8081
 {{/*      tls:*/}}
 {{/*        enabled: true*/}}
