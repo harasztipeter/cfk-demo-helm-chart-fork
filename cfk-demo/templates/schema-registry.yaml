@@ -12,7 +12,7 @@ spec:
 {{/*    secretRef: tls-schema-registry*/}}
   dependencies:
     kafka:
-      bootstrapEndpoint: kafka.cfk.svc.cluster.local:9071
+      bootstrapEndpoint: kafka.{{.Values.namespace}}.svc.cluster.local:9071
 {{/*      authentication:*/}}
 {{/*        type: mtls*/}}
 {{/*      tls:*/}}
