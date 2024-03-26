@@ -15,8 +15,10 @@ controlCenter:
 kafka:
   replicas: 1
   dataVolumeCapacity: 250Mi
+  name: kafka-poc
 
 schemaRegistry:
   replicas: 1
+  name: schema-registry
 
 namespace: kafka-confluent-poc

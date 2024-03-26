@@ -1,7 +1,7 @@
 apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
 metadata:
-  name: schema-registry
+  name: {{ .Values.schemaRegistry.name }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.schemaRegistry.replicas }}
@@ -12,7 +12,7 @@ spec:
 {{/*    secretRef: tls-schema-registry*/}}
   dependencies:
     kafka:
-      bootstrapEndpoint: kafka.{{.Values.namespace}}.svc.cluster.local:9071
+      bootstrapEndpoint: {{ .Values.kafka.name }}.{{.Values.namespace}}.svc.cluster.local:9071
 {{/*      authentication:*/}}
 {{/*        type: mtls*/}}
 {{/*      tls:*/}}
