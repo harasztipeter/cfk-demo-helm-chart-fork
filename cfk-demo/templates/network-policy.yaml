@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-inter-kafka-communication
+  namespace: {{ .Values.namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/part-of: kafka-poc
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/part-of: kafka-poc
+        - podSelector:
+            matchLabels:
+              confluent-platform: 'true'
+          # TODO add namespace selector for even more fine-grained approach
+  policyTypes:
+    - Ingress
