@@ -1,0 +1,33 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaRestProxy
+metadata:
+  name: kafka-rest-proxy
+  namespace: kafka-confluent-poc
+spec:
+  replicas: 1
+  image:
+    application: {{ .Values.images.restProxy }}
+    init: {{ .Values.images.init }}
+{{/*  license:*/}}
+{{/*    secretRef: confluent-license*/}}
+  podTemplate:
+    labels:
+      app.kubernetes.io/part-of: kafka-poc
+    podSecurityContext:
+      runAsUser: 1001760001
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 512Mi
+  authentication:
+    type: basic
+    basic:
+      secretRef: kafka-rest-proxy-users
+  dependencies:
+    kafka:
+      bootstrapEndpoint: {{ .Values.kafka.name }}.{{ .Values.namespace }}.svc.cluster.local:9071
+    schemaRegistry:
+      url: {{ printf "http://%s.%s.svc.cluster.local:8081" .Values.schemaRegistry.name .Values.namespace}}

@@ -1,0 +1,10 @@
+# Needed for topic creation - https://docs.confluent.io/operator/current/co-manage-rest-api.html#co-manage-rest-api
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaRestClass
+metadata:
+  name: default
+  namespace: {{ .Values.namespace }}
+spec:
+  kafkaClusterRef:
+    name: {{ .Values.kafka.name }}
+    namespace: {{ .Values.namespace }}
