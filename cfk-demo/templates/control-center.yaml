@@ -33,7 +33,7 @@ spec:
       secretRef: control-center-basic-auth
   dependencies:
     kafka:
-      bootstrapEndpoint: kafka.cfk.svc.cluster.local:9071
+      bootstrapEndpoint: kafka.{{ .Values.namespace }}.svc.cluster.local:9071
     schemaRegistry:
 {{/*      url: https://schema-registry.cfk.svc.cluster.local:8081*/}}
       url: http://schema-registry.cfk.svc.cluster.local:8081
