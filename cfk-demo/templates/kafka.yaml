@@ -6,7 +6,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KRaftController
 metadata:
   name: kraft-poc
-  namespace: kafka-confluent-poc
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.kraft.replicas }}
   image:
@@ -34,7 +34,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Kafka
 metadata:
   name: kafka-poc
-  namespace: kafka-confluent-poc
+  namespace: {{ .Values.namespace }}
 spec:
 {{/*  storageClass:*/}}
 {{/*    name: ocs-storagecluster-ceph-rbd*/}}

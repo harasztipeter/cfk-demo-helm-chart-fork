@@ -18,3 +18,5 @@ kafka:
 
 schemaRegistry:
   replicas: 1
+
+namespace: kafka-confluent-poc

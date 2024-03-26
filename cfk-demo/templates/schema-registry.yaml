@@ -2,7 +2,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
 metadata:
   name: schema-registry
-  namespace: cfk
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.schemaRegistry.replicas }}
   image:

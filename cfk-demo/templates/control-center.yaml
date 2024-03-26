@@ -2,7 +2,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: ControlCenter
 metadata:
   name: control-center
-  namespace: cfk
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: {{ .Values.controlCenter.replicas }}
   image:
