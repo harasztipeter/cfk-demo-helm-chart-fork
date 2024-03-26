@@ -8,16 +8,32 @@ spec:
   image:
     application: {{ .Values.images.controlCenter }}
     init: {{ .Values.images.init }}
+  podTemplate:
+    labels:
+      app.kubernetes.io/part-of: kafka-poc
+    podSecurityContext:
+      runAsUser: 1001760001
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 512Mi
+{{/*  storageClass:*/}}
+{{/*    name: ocs-storagecluster-ceph-rbd*/}}
   dataVolumeCapacity: 250Mi
 {{/*  tls:*/}}
 {{/*    secretRef: tls-control-center*/}}
+  authentication:
+    type: basic
+    basic:
+      roles:
+        - Administrators
+      secretRef: control-center-basic-auth
   dependencies:
     kafka:
       bootstrapEndpoint: kafka.cfk.svc.cluster.local:9071
-{{/*      authentication:*/}}
-{{/*        type: mtls*/}}
-{{/*      tls:*/}}
-{{/*        enabled: true*/}}
     schemaRegistry:
 {{/*      url: https://schema-registry.cfk.svc.cluster.local:8081*/}}
       url: http://schema-registry.cfk.svc.cluster.local:8081

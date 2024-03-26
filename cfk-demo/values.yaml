@@ -7,12 +7,14 @@ images:
 
 kraft:
   replicas: 1
+  dataVolumeCapacity: 250Mi
 
 controlCenter:
   replicas: 1
 
 kafka:
   replicas: 1
+  dataVolumeCapacity: 250Mi
 
 schemaRegistry:
   replicas: 1
