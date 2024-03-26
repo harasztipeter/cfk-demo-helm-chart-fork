@@ -13,8 +13,8 @@ spec:
     application: {{ .Values.images.kraftControllerApplication }}
     init: {{ .Values.images.init }}
   dataVolumeCapacity: {{ .Values.kraft.dataVolumeCapacity }}
-  license:
-    secretRef: confluent-license
+{{/*  license:*/}}
+{{/*    secretRef: confluent-license*/}}
   podTemplate:
     labels:
       app.kubernetes.io/part-of: kafka-poc
@@ -42,8 +42,8 @@ spec:
   image:
     application: {{ .Values.images.cpServer }}
     init: {{ .Values.images.init }}
-  license:
-    secretRef: confluent-license
+{{/*  license:*/}}
+{{/*    secretRef: confluent-license*/}}
   dataVolumeCapacity: {{ .Values.kafka.dataVolumeCapacity }}
   podTemplate:
     labels:
