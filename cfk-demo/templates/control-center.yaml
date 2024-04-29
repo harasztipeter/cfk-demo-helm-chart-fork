@@ -26,11 +26,27 @@ spec:
 {{/*  tls:*/}}
 {{/*    secretRef: tls-control-center*/}}
   authentication:
-    type: basic
-    basic:
-      roles:
-        - Administrators
-      secretRef: control-center-basic-auth
+    type: ldap
+    ldap: 
+      secredRef: ldap-secret
+      property:
+        useLdaps: "true"
+        # contextFactory: "com.sun.jndi.ldap.LdapCtxFactory"
+        hostname: "localhost"
+        port: "389"
+        bindDn: ""
+        bindPassword: ""
+        authenticationMethod: "simple"
+        forceBindingLogin: "true"
+        userBaseDn: "ou=People,dc=example,dc=org"
+        userRdnAttribute: "uid"
+        userIdAttribute: "cn"
+        userPasswordAttribute: "userPassword"
+        userObjectClass: "person"
+        roleBaseDn: "ou=Groups,dc=example,dc=org"
+        roleNameAttribute: "cn"
+        roleMemberAttribute: "member"
+        roleObjectClass: "group"
   dependencies:
     kafka:
       bootstrapEndpoint: {{ .Values.kafka.name }}.{{ .Values.namespace }}.svc.cluster.local:9071
