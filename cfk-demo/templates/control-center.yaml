@@ -28,7 +28,7 @@ spec:
   authentication:
     type: ldap
     ldap: 
-      secredRef: ldap-secret
+      secretRef: ldap-secret
       property:
         useLdaps: "true"
         # contextFactory: "com.sun.jndi.ldap.LdapCtxFactory"
