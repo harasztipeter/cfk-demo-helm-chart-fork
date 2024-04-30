@@ -69,6 +69,12 @@ spec:
 {{/*          domain: apps.ost.grid.inet*/}}
 {{/*          bootstrapPrefix: kafka-poc*/}}
 {{/*          brokerPrefix: kafka-poc-b*/}}
+      external:
+        externalAccess:
+          type: nodePort
+          nodePort:
+            host: <host>
+            nodePortOffset: 30000
       authentication:
         type: plain
         jaasConfig:
