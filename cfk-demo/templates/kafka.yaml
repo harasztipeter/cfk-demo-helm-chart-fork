@@ -71,10 +71,9 @@ spec:
 {{/*          brokerPrefix: kafka-poc-b*/}}
       external:
         externalAccess:
-          type: nodePort
-          nodePort:
-            host: <host>
-            nodePortOffset: 30000
+          type: loadBalancer
+          loadBalancer:
+            domain: test.pk
       authentication:
         type: plain
         jaasConfig:
