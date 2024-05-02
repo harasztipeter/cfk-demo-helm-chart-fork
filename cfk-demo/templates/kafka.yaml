@@ -71,9 +71,9 @@ spec:
 {{/*          brokerPrefix: kafka-poc-b*/}}
       external:
         externalAccess:
-          type: ingress
-          ingress:
-            advertisedPort: 9092
+          type: loadBalancer
+          loadBalancer:
+            domain: test.at
       authentication:
         type: plain
         jaasConfig:
