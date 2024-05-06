@@ -27,6 +27,12 @@ spec:
       requests:
         cpu: 100m
         memory: 512Mi
+  dependencies:
+    mdsKafkaCluster:
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: {{ .Values.kraft.credentialsSecret }}
 {{/*  storageClass:*/}}
 {{/*    name: ocs-storagecluster-ceph-rbd*/}}
 ---
@@ -62,18 +68,35 @@ spec:
       - "confluent.metrics.topic.retention.ms=3600000"
       - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
   listeners:
+    internal:
+      authentication:
+        type: ldap
+        jaasConfig:
+          secretRef: ldap-secret
+    external:
+      authentication:
+        type: ldap
+      externalAccess:
+        type: loadBalancer
+        loadBalancer:
+          domain: test.at
+  identityProvider:
+    type: ldap
+    ldap: 
+      address: ldaps://ldap.openldap-demo.svc.cluster.local:636
+      authentication:
+        type: mtls
+      tls:
+        enabled: true
+      configurations:
+        groupMemberAttribute: developer
 {{/*    external:*/}}
-{{/*      externalAccess:*/}}
+{{/*      externalAccess:*/}} 
 {{/*        type: route*/}}
 {{/*        route:*/}}
 {{/*          domain: apps.ost.grid.inet*/}}
 {{/*          bootstrapPrefix: kafka-poc*/}}
 {{/*          brokerPrefix: kafka-poc-b*/}}
-      external:
-        externalAccess:
-          type: loadBalancer
-          loadBalancer:
-            domain: test.at
       authentication:
         type: plain
         jaasConfig:

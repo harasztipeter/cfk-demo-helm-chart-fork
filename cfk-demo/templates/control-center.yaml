@@ -31,7 +31,7 @@ spec:
       secretRef: ldap-secret
       property:
         useLdaps: "true"
-        # contextFactory: "com.sun.jndi.ldap.LdapCtxFactory"
+        {{/* contextFactory: "com.sun.jndi.ldap.LdapCtxFactory" */}}
         hostname: "localhost"
         port: "389"
         bindDn: ""
@@ -49,6 +49,10 @@ spec:
         roleObjectClass: "group"
   dependencies:
     kafka:
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: {{ .Values.controlCenter.credentialsSecret }}
       bootstrapEndpoint: {{ .Values.kafka.name }}.{{ .Values.namespace }}.svc.cluster.local:9071
     schemaRegistry:
 {{/*      url: https://schema-registry.cfk.svc.cluster.local:8081*/}}
