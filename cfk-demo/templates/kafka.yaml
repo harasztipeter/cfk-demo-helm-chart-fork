@@ -97,6 +97,10 @@ spec:
 {{/*          domain: apps.ost.grid.inet*/}}
 {{/*          bootstrapPrefix: kafka-poc*/}}
 {{/*          brokerPrefix: kafka-poc-b*/}}
+      authentication:
+        type: plain
+        jaasConfig:
+          secretRef: kafka-external-sasl-users
 {{/*      tls:*/}}
 {{/*        enabled: true*/}}
 {{/*        secretRef: tls-kafka-poc*/}}
