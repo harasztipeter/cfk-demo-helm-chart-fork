@@ -9,12 +9,10 @@ images:
 kraft:
   replicas: 1
   dataVolumeCapacity: 250Mi
-  credentialsSecret: kraft-ldap-secret
 
 controlCenter:
   enabled: false
   replicas: 1
-  credentialsSecret: control-center-ldap-secret
 
 kafka:
   replicas: 1
@@ -24,7 +22,6 @@ kafka:
 schemaRegistry:
   replicas: 1
   name: schema-registry
-  credentialsSecret: schema-registry-ldap-secret
 
 restProxy:
   enabled: false

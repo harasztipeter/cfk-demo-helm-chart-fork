@@ -12,10 +12,6 @@ spec:
 {{/*    secretRef: tls-schema-registry*/}}
   dependencies:
     kafka:
-      authentication:
-        type: plain
-        jaasConfig:
-          secretRef: {{ .Values.schemaRegistry.credentialsSecret }}
       bootstrapEndpoint: {{ .Values.kafka.name }}.{{.Values.namespace}}.svc.cluster.local:9071
 {{/*      authentication:*/}}
 {{/*        type: mtls*/}}
