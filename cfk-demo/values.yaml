@@ -12,6 +12,7 @@ kraft:
   credentialsSecret: kraft-ldap-secret
 
 controlCenter:
+  enabled: false
   replicas: 1
   credentialsSecret: control-center-ldap-secret
 
@@ -24,5 +25,8 @@ schemaRegistry:
   replicas: 1
   name: schema-registry
   credentialsSecret: schema-registry-ldap-secret
+
+restProxy:
+  enabled: false
 
 namespace: kafka-confluent-poc

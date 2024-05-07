@@ -1,3 +1,4 @@
+{{ if .Values.controlCenter.enabled }}
 apiVersion: platform.confluent.io/v1beta1
 kind: ControlCenter
 metadata:
@@ -59,3 +60,4 @@ spec:
       url: {{ printf "http://%s.%s.svc.cluster.local:8081" .Values.schemaRegistry.name .Values.namespace}}
 {{/*      tls:*/}}
 {{/*        enabled: true*/}}
+{{ end }}
