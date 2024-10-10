@@ -26,4 +26,11 @@ schemaRegistry:
 restProxy:
   enabled: false
 
+topic:
+  name: example-topic
+  replicas: 1
+  partitions: 1
+  configs:
+    cleanupPolicy: compact
+
 namespace: kafka-confluent-poc
