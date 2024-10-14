@@ -26,6 +26,4 @@ schemaRegistry:
 restProxy:
   enabled: false
 
-topics: {{ tpl .Files.Get "kafka-topics.yaml" | fromYaml }}
-
 namespace: kafka-confluent-poc
