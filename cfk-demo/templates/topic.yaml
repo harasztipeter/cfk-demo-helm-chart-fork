@@ -1,13 +1,16 @@
+{{- range .Values.topics }}
 apiVersion: platform.confluent.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: {{ .Values.topic.name }}
-  namespace: {{ .Values.namespace }}
+  name: {{ .name }}
+  namespace: {{ $.Values.namespace }}
 spec:
-  partitionCount: {{ .Values.topic.partitions }}
-  replicas: {{ .Values.topic.replicas }}
+  partitionCount: {{ .partitions }}
+  replicas: {{ .replicas }}
   configs:
-    cleanup.policy: {{ .Values.topic.configs.cleanupPolicy }}
+    cleanup.policy: {{ .configs.cleanupPolicy }}
   kafkaClusterRef:
-    name: {{ .Values.kafka.name }}
-    namespace: {{ .Values.namespace }}
+    name: {{ $.Values.kafka.name }}
+    namespace: {{ $.Values.namespace }}
+---
+{{- end }}
