@@ -8,7 +8,7 @@ images:
 
 kraft:
   replicas: 3
-  dataVolumeCapacity: 250Mi
+  dataVolumeCapacity: 300Mi
 
 controlCenter:
   enabled: false
@@ -16,11 +16,11 @@ controlCenter:
 
 kafka:
   replicas: 3
-  dataVolumeCapacity: 250Mi
+  dataVolumeCapacity: 290Mi
   name: kafka-poc
 
 schemaRegistry:
-  replicas: 1
+  replicas: 2
   name: schema-registry
 
 restProxy:
