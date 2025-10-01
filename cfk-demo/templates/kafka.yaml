@@ -7,6 +7,8 @@ kind: KRaftController
 metadata:
   name: kraft-poc
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   replicas: {{ .Values.kraft.replicas }}
   image:
@@ -35,6 +37,8 @@ kind: Kafka
 metadata:
   name: {{ .Values.kafka.name }}
   namespace: {{ .Values.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
 {{/*  storageClass:*/}}
 {{/*    name: ocs-storagecluster-ceph-rbd*/}}
