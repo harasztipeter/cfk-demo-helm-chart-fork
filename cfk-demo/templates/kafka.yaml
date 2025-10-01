@@ -20,8 +20,8 @@ spec:
   podTemplate:
     labels:
       app.kubernetes.io/part-of: kafka-poc
-    podSecurityContext:
-      runAsUser: 1001760001
+#    podSecurityContext:
+#      runAsUser: 1001760001
     resources:
       limits:
         cpu: 500m
@@ -52,8 +52,8 @@ spec:
   podTemplate:
     labels:
       app.kubernetes.io/part-of: kafka-poc
-    podSecurityContext:
-      runAsUser: 1001760001
+#    podSecurityContext:
+#      runAsUser: 1001760001
     resources:
       limits:
         cpu: 500m
@@ -64,7 +64,7 @@ spec:
   configOverrides:
     server:
       - "confluent.metrics.topic.retention.ms=3600000"
-      - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
+#      - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
   listeners:
 {{/*    external:*/}}
 {{/*      externalAccess:*/}}
@@ -78,10 +78,10 @@ spec:
           type: loadBalancer
           loadBalancer:
             domain: test.at
-      authentication:
-        type: plain
-        jaasConfig:
-          secretRef: kafka-external-sasl-users
+#      authentication:
+#        type: plain
+#        jaasConfig:
+#          secretRef: kafka-external-sasl-users
 {{/*      tls:*/}}
 {{/*        enabled: true*/}}
 {{/*        secretRef: tls-kafka-poc*/}}
