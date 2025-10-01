@@ -7,7 +7,7 @@ images:
   restProxy: confluentinc/cp-kafka-rest:7.5.1
 
 kraft:
-  replicas: 1
+  replicas: 3
   dataVolumeCapacity: 250Mi
 
 controlCenter:
@@ -15,7 +15,7 @@ controlCenter:
   replicas: 1
 
 kafka:
-  replicas: 1
+  replicas: 3
   dataVolumeCapacity: 250Mi
   name: kafka-poc
 
