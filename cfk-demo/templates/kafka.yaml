@@ -10,6 +10,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
+  metricReporter:
+    enabled: false
   replicas: {{ .Values.kraft.replicas }}
   image:
     application: {{ .Values.images.kraftControllerApplication }}
@@ -43,6 +45,8 @@ spec:
 {{/*  storageClass:*/}}
 {{/*    name: ocs-storagecluster-ceph-rbd*/}}
   replicas: {{ .Values.kafka.replicas }}
+  metricReporter:
+    enabled: false
   image:
     application: {{ .Values.images.cpServer }}
     init: {{ .Values.images.init }}
