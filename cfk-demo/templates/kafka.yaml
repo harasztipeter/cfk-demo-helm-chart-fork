@@ -65,7 +65,7 @@ spec:
     server:
       - "confluent.metrics.topic.retention.ms=3600000"
 #      - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
-  listeners:
+#  listeners:
 {{/*    external:*/}}
 {{/*      externalAccess:*/}}
 {{/*        type: route*/}}
@@ -73,11 +73,11 @@ spec:
 {{/*          domain: apps.ost.grid.inet*/}}
 {{/*          bootstrapPrefix: kafka-poc*/}}
 {{/*          brokerPrefix: kafka-poc-b*/}}
-      external:
-        externalAccess:
-          type: loadBalancer
-          loadBalancer:
-            domain: test.at
+#      external:
+#        externalAccess:
+#          type: loadBalancer
+#          loadBalancer:
+#            domain: test.at
 #      authentication:
 #        type: plain
 #        jaasConfig:
