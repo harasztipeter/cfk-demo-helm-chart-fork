@@ -18,3 +18,15 @@ spec:
           # TODO add namespace selector for even more fine-grained approach
   policyTypes:
     - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-all-ingress
+  namespace: {{ .Values.namespace }}
+spec:
+  podSelector: {}
+  ingress:
+  - {}
+  policyTypes:
+  - Ingress
