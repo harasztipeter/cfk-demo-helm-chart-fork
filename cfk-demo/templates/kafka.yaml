@@ -68,6 +68,12 @@ spec:
   configOverrides:
     server:
       - "confluent.metrics.topic.retention.ms=3600000"
+      - "num.partitions=4"
+      - "min.insync.replicas=2"
+      - "log.segment.bytes=104857600"
+      - "confluent.consumer.lag.emitter.enabled=true"
+{{ empty .Values.kafka.configOverrides.server | ternary nil (toYaml .Values.kafka.configOverrides.server | indent 6) }}
+
 #      - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
 #  listeners:
 {{/*    external:*/}}

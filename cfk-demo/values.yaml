@@ -18,6 +18,9 @@ kafka:
   replicas: 3
   dataVolumeCapacity: 250Mi
   name: kafka-poc
+  configOverrides:
+    server:
+      - "confluent.consumer.lag.emitter.interval.ms=60000"
 
 schemaRegistry:
   replicas: 2
