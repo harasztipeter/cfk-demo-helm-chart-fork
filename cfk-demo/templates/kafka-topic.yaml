@@ -13,20 +13,5 @@ spec:
     name: {{ $.Values.kafka.name }}
     namespace: {{ $.Values.namespace }}
 ---
-apiVersion: platform.confluent.io/v1beta1
-kind: KafkaTopic
-metadata:
-  name: dummy.topic
-  namespace: {{ $.Values.namespace }}
-spec:
-  name: dummy.topic
-  configs:
-    min.insync.replicas: '2'
-    retention.ms: '-1'
-  partitionCount: 1
-  replicas: 3
-  kafkaClusterRef:
-    name: kafka
-    namespace: {{ $.Values.namespace }}
 
 {{- end }}
