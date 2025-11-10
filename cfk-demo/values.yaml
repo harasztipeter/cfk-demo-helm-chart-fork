@@ -42,10 +42,10 @@ topics:
   #   configs:
   #     cleanupPolicy: delete
 
-  - name: example-topic-3
-    replicas: 1
-    partitions: 1
-    configs:
-      cleanupPolicy: delete
+  # - name: example-topic-3
+  #   replicas: 1
+  #   partitions: 1
+  #   configs:
+  #     cleanupPolicy: delete
 
 namespace: kafka-confluent-poc
