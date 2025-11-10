@@ -36,11 +36,11 @@ topics:
   #   configs:
   #     cleanupPolicy: compact
 
-  - name: example-topic-2
-    replicas: 2
-    partitions: 2
-    configs:
-      cleanupPolicy: delete
+  # - name: example-topic-2
+  #   replicas: 2
+  #   partitions: 2
+  #   configs:
+  #     cleanupPolicy: delete
 
   - name: example-topic-3
     replicas: 1
