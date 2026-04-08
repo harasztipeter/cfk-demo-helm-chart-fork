@@ -72,6 +72,7 @@ spec:
       - "min.insync.replicas=2"
       - "log.segment.bytes=104857600"
       - "confluent.consumer.lag.emitter.enabled=true"
+      - "confluent.cluster.link.enable=false"
 {{ empty .Values.kafka.configOverrides.server | ternary nil (toYaml .Values.kafka.configOverrides.server | indent 6) }}
 
 #      - "--metric.reporters=io.confluent.metrics.reporter.ConfluentMetricsReporter"
